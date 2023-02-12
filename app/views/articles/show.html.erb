@@ -4,32 +4,10 @@
 
 
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-  </p>
-<% end %>
+<%= render @article.comments %>
 
 <h2>Add a Comment:</h2>
-<%= form_with model: [ @article,  @article.comments.build ] do |f| %>
-  <p>
-    <%= f.label :commenter %>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'comments/form' %>
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
